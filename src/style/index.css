@@ -94,16 +94,16 @@ main {
 	margin-left: -0.5em;
 	position: absolute;
 	top: 100%;
-	width: max-content;
 	background-color: var(--ui-bg-color);
 	border-radius: 0 0 0.5em 0.5em;
 	overflow: hidden;
 	font-size: 0.9em;
+        width: 100%;
 }
 
 .dropdown-option {
 	transition: 0.1s;
-	padding: 0.2em;
+	padding: 0.2em 0.5em;
 }
 
 .dropdown-option:hover, .dropdown:hover {
