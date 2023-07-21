@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap');
+
+:root {
+	font-family: 'Poppins', 'Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	color-scheme: light dark;
+	color: #eee;
+	--bg-color: #2ca55e;
+	--ui-bg-color: #238a4e;
+	background: var(--bg-color)
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+}
+
+main {
+	display: grid;
+	place-content: center;
+	height: 100vh;
+}
+
+.center {
+	background-color: var(--ui-bg-color);
+	font-size: 2.5em;
+	padding: 1em;
+	border-radius: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.corner {
+	position: absolute;
+	font-size: 1.2em;
+	top: 0.2em;
+	right: 0.2em;
+}
+
+.field {
+	background-color: #0003;
+	padding: 0.2em;
+	border-radius: 0.2em;
+	margin: 0 0.2em;
+	font-family: 'Roboto Mono', monospace;
+}
+
+.option {
+	display: flex;
+	flex-direction: row;
+}
+
+.option > * {
+    flex-grow: 1;
+	flex-basis: 0;
+}
+
+.timer {
+	font-size: 1.5em;
+}
+
+.subtitle {
+	margin: 0.5em 0;
+}
+
+.fade {
+	opacity: 0.5;
+}
+
+.dropdown {
+	width: max-content;
+	font-size: 1.2em;
+	position: relative;
+	border-radius: 0.5em;
+	background-color: #0002;
+	cursor: pointer;
+	transition: 0.1s;
+	padding: 0.5em;
+}
+
+.dropdown-option-selected::after {
+	content: "▼";
+	font-size: 0.5em;
+	transform: translate(0, -0.25em);
+	display: inline-block;
+}
+
+.dropdown-content {
+	margin-left: -0.5em;
+	position: absolute;
+	top: 100%;
+	width: max-content;
+	background-color: var(--ui-bg-color);
+	border-radius: 0 0 0.5em 0.5em;
+	overflow: hidden;
+	font-size: 0.9em;
+}
+
+.dropdown-option {
+	transition: 0.1s;
+	padding: 0.2em;
+}
+
+.dropdown-option:hover, .dropdown:hover {
+	background-color: #0003;
+}
