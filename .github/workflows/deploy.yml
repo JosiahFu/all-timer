@@ -21,7 +21,7 @@ jobs:
       
       - name: Build app
         env:
-          GITHUB_PAGES: super-tic-tac-toe
+          GITHUB_PAGES: all-timer
         run: npm run build-gh
         
       - name: Upload GitHub Pages artifact
