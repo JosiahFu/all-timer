@@ -3,6 +3,7 @@ import Timer from './Timer';
 import { useMemo, useState } from 'preact/hooks';
 import Dropdown from './Dropdown';
 import { DateComponents, formatDate, pd } from '../DateFormat';
+import useLocalStorageState from '../useLocalStorageState';
 
 function App () {
 	
@@ -11,7 +12,7 @@ function App () {
 		c => `${c.year}-${pd(c.month)}-${pd(c.day)} ${pd(c.hour)}:${pd(c.minute)}`,
 	], []);
 	
-	const [chosenFormat, setChosenFormat] = useState(0);
+	const [chosenFormat, setChosenFormat] = useLocalStorageState(0, 'chosenFormat');
 
 	const timeOptions = useMemo(() => [
 		['Start of School', new Date('2023-08-14T08:30:00')],
@@ -19,7 +20,7 @@ function App () {
 		['Socal Showdown', new Date('2023-10-06T08:00:00')],
 	] as [name: string, start: Date][], []);
 	
-	const [chosenTime, setChosenTime] = useState(0);
+	const [chosenTime, setChosenTime] = useLocalStorageState(0, 'chosenTime');
 	
 	const targetTime = useMemo(() => timeOptions[chosenTime], [timeOptions, chosenTime]);
     
