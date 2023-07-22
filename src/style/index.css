@@ -5,7 +5,6 @@
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
 	color-scheme: light dark;
 	color: #eee;
 	--bg-color: #2ca55e;
@@ -23,11 +22,12 @@ main {
 	display: grid;
 	place-content: center;
 	height: 100vh;
+	overflow: hidden;
 }
 
 .center {
 	background-color: var(--ui-bg-color);
-	font-size: 2.5em;
+	font-size: 1.2em;
 	padding: 1em;
 	border-radius: 1em;
 	display: flex;
@@ -62,6 +62,9 @@ main {
 
 .timer {
 	font-size: 1.5em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
 }
 
 .subtitle {
@@ -74,12 +77,11 @@ main {
 
 .dropdown {
 	width: max-content;
-	font-size: 1.2em;
 	position: relative;
 	border-radius: 0.5em;
 	background-color: #0002;
 	cursor: pointer;
-	transition: 0.1s;
+	transition: background-color 0.1s;
 	padding: 0.5em;
 }
 
@@ -102,10 +104,54 @@ main {
 }
 
 .dropdown-option {
-	transition: 0.1s;
+	transition: background-color 0.1s;
 	padding: 0.2em 0.5em;
 }
 
 .dropdown-option:hover, .dropdown:hover {
 	background-color: #0003;
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.center {
+		font-size: 1.6em;
+	}
+	
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.center {
+		font-size: 1.8em;		
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.center {
+		font-size: 1.5em;
+	}
+
+	.timer {
+		flex-direction: row;
+		gap: 0;
+
+	}
+	.dropdown {
+		font-size: 1.2em;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	.center {
+		font-size: 1.8em;
+	}
+} 
+
+@media only screen and (min-width: 1600px) {
+	.center {
+		font-size: 2.5em;
+	}
+} 

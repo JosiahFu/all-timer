@@ -2,12 +2,12 @@ import { h, Fragment } from 'preact';
 import Timer from './Timer';
 import { useMemo, useState } from 'preact/hooks';
 import Dropdown from './Dropdown';
-import { DateComponents, formatDate, pd } from '../Util';
+import { DateComponents, formatDate, pd } from '../DateFormat';
 
 function App () {
 	
 	const dateFormats: ((components: DateComponents) => string)[] = useMemo(() => [
-		c => `${c.month}/${c.day}/${c.year.substring(2,4)} ${c.hour}:${pd(c.minute)}`,
+		c => `${c.month}/${c.day}/${c.year.substring(2,4)} ${c.hr12}:${pd(c.minute)} ${c.ampm}`,
 		c => `${c.year}-${pd(c.month)}-${pd(c.day)} ${pd(c.hour)}:${pd(c.minute)}`,
 	], []);
 	
@@ -45,7 +45,9 @@ function App () {
 					month: 'MM',
 					day: 'DD',
 					hour: 'hh',
-					minute: 'mm'
+					hr12: 'hh',
+					minute: 'mm',
+					ampm: 'A/P'
 				})
 			)}</Dropdown>
 		</div>

@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { pd } from '../Util';
+import { pd } from '../DateFormat';
 
 function Timer(props: {
     targetTime: Date
@@ -21,14 +21,22 @@ function Timer(props: {
     const seconds = Math.floor(diff / 1000) % 60;
     
     return <div class="timer">
-        <span class="field">{days}</span>
-        days,
-        <span class="field">{pd(hours)}</span>
-        hours,
-        <span class="field">{pd(minutes)}</span>
-        minutes, and
-        <span class="field">{pd(seconds)}</span>
-        seconds
+        <div class="timer-line">
+            <span class="field">{days}</span>
+            days,
+        </div>
+        <div class="timer-line">
+            <span class="field">{pd(hours)}</span>
+            hours,
+        </div>
+        <div class="timer-line">
+            <span class="field">{pd(minutes)}</span>
+            minutes, and
+        </div>
+        <div class="timer-line">
+            <span class="field">{pd(seconds)}</span>
+            seconds
+        </div>
     </div>;
 }
 

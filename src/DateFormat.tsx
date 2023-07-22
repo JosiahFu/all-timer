@@ -3,16 +3,20 @@ interface DateComponents {
 	month: string;
 	day: string;
 	hour: string;
+	hr12: string;
 	minute: string;
+	ampm: string;
 }
 
 function formatDate(date: Date, formatter: (components: DateComponents) => string) {
 	return formatter({
-		year: 	date.getFullYear().toString(),
-		month: (date.getMonth()+1).toString(), // 0 indexed
-		day:    date.getDate()    .toString(),
-		hour:   date.getHours()   .toString(),
-		minute: date.getMinutes() .toString(),
+		year: 	date.getFullYear() .toString(),
+		month: (date.getMonth()+1) .toString(), // 0 indexed
+		day:    date.getDate()     .toString(),
+		hour:   date.getHours()    .toString(),
+		hr12:  (date.getHours()%12).toString(),
+		minute: date.getMinutes()  .toString(),
+		ampm:   date.getHours() > 11 ? 'AM' : 'PM'
 	});
 }
 
