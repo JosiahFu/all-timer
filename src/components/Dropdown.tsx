@@ -24,8 +24,8 @@ function Dropdown<T,>(props: {
         return () => window.removeEventListener('click', handler);
     })
 
-    return <div class="dropdown">
-        <div class="dropdown-option-selected" onClick={handleClick}>{props.children(props.options[props.value])}</div>
+    return <div class={`dropdown ${opened ? 'dropdown-open' : ''}`}>
+        <div class="dropdown-button" onClick={handleClick}>{props.children(props.options[props.value])}</div>
         {opened && <div class="dropdown-content">{props.options.map((e, i) => (
             <div key={i} class="dropdown-option" onClick={() => props.onInput(i)}>
                 {props.children(e)}

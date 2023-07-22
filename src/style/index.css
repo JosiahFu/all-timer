@@ -73,11 +73,16 @@ main {
 
 .fade {
 	opacity: 0.5;
+	font-size: 0.8em;
 }
 
 .dropdown {
 	width: max-content;
 	position: relative;
+	user-select: none;
+}
+
+.dropdown-button {
 	border-radius: 0.5em;
 	background-color: #0002;
 	cursor: pointer;
@@ -85,30 +90,40 @@ main {
 	padding: 0.5em;
 }
 
-.dropdown-option-selected::after {
+.dropdown-button::after {
 	content: "▼";
 	font-size: 0.5em;
 	transform: translate(0, -0.25em);
+	margin-left: 0.5em;
 	display: inline-block;
 }
 
+.dropdown-open .dropdown-button {
+	border-radius: 0.5em 0.5em 0 0;
+}
+
+/*.dropdown-open .dropdown-button::after {
+	content: "▲";
+} */
+
 .dropdown-content {
-	margin-left: -0.5em;
 	position: absolute;
 	top: 100%;
 	background-color: var(--ui-bg-color);
 	border-radius: 0 0 0.5em 0.5em;
 	overflow: hidden;
 	font-size: 0.9em;
-        width: 100%;
+	min-width: 100%;
+	width: max-content;
 }
 
 .dropdown-option {
 	transition: background-color 0.1s;
 	padding: 0.2em 0.5em;
+	cursor: pointer;
 }
 
-.dropdown-option:hover, .dropdown:hover {
+.dropdown-option:hover, .dropdown-button:hover, .dropdown-open .dropdown-button, .dropdown-option:active, .dropdown-button:active {
 	background-color: #0003;
 }
 
@@ -123,7 +138,7 @@ main {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 	.center {
-		font-size: 1.8em;		
+		font-size: 2em;		
 	}
 }
 
