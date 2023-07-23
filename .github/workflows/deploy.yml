@@ -1,4 +1,4 @@
-name: Deploy React to gh-pages
+name: Deploy Preact to gh-pages
 
 on:
   push:
