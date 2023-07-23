@@ -13,6 +13,5 @@ declare -A sizes=(
 
 for i in "${!sizes[@]}"; do
     echo "Generating $i"
-    background=$([[ "$i" == *android* ]] && echo 'white' || echo 'transparent')
-    convert -background $background -size "${sizes[$i]}x${sizes[$i]}" icon.svg "$i"
+    convert -background transparent -size "${sizes[$i]}x${sizes[$i]}" icon.svg "$i"
 done
