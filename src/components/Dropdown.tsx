@@ -5,7 +5,9 @@ function Dropdown<T,>(props: {
     options: T[],
     value: number,
     onInput: (value: number) => void,
-    children: (option: T) => preact.ComponentChild
+    children: (option: T) => preact.ComponentChild,
+    endItem?: preact.ComponentChild,
+    onChooseEnd?: h.JSX.MouseEventHandler<HTMLDivElement>
 }) {
     const [opened, setOpened] = useState(false);
     
@@ -26,11 +28,16 @@ function Dropdown<T,>(props: {
 
     return <div class={`dropdown ${opened ? 'dropdown-open' : ''}`}>
         <div class="dropdown-button" onClick={handleClick}>{props.children(props.options[props.value])}</div>
-        {opened && <div class="dropdown-content">{props.options.map((e, i) => (
-            <div key={i} class="dropdown-option" onClick={() => props.onInput(i)}>
-                {props.children(e)}
-            </div>
-        ))}</div>}
+        {opened && <div class="dropdown-content">
+            {props.options.map((e, i) => (
+                <div key={i} class="dropdown-option" onClick={() => props.onInput(i)}>
+                    {props.children(e)}
+                </div>
+            ))}
+            {props.endItem && <div class="dropdown-option" onClick={props.onChooseEnd}>
+                {props.endItem}
+            </div>}
+        </div>}
     </div>
 }
 
