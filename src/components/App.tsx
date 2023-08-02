@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact';
 import Timer from './Timer';
-import { useCallback, useMemo, useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import Dropdown from './Dropdown';
 import { DateComponents, formatDate, pd } from '../DateFormat';
 import useLocalStorageState from '../useLocalStorageState';
@@ -14,34 +14,22 @@ function App () {
 	
 	const [chosenFormat, setChosenFormat] = useLocalStorageState(0, 'chosenFormat');
 
-	const [timeOptions, setTimeOptions] = useLocalStorageState(useMemo(() => [
-		['Start of School', new Date('2023-08-14T08:50:00')],
+	const timeOptions = useMemo(() => [
+		['Start of School', new Date('2023-08-14T08:30:00')],
 		['Socal Showdown', new Date('2023-10-06T08:00:00')],
-		['UC Applications Due', new Date('2023-10-30T11:59:00')],
+                ['UC Applications Due', new Date('2023-10-30T11:59:00')],
 		['2024 Kickoff', new Date('2024-01-13T09:00:00')],
-	] as [name: string, start: Date][], []), 'timeOptions');
+	] as [name: string, start: Date][], []);
 	
 	const [chosenTime, setChosenTime] = useLocalStorageState(0, 'chosenTime');
 	
 	const targetTime = useMemo(() => timeOptions[chosenTime], [timeOptions, chosenTime]);
-	
-	const [showModal, setShowModal] = useState(false);
-	
-	const handleAddTime = (time: [name: string, start: Date]) => {
-		setTimeOptions([...timeOptions, time]);
-	};
-	
-	const handleClickAdd = useCallback(() => {
-		setShowModal(true);
-	}, []);
     
 	return <main>
 		<div class="center">
 			<Timer targetTime={targetTime[1]} />
 			<span class="subtitle">until</span>
-			<Dropdown options={timeOptions} value={chosenTime} onInput={setChosenTime}
-				endItem={'+'} onChooseEnd={handleClickAdd}
-			>{(option) => (
+			<Dropdown options={timeOptions} value={chosenTime} onInput={setChosenTime}>{(option) => (
 				// <div class="option">
 				// 	<div>{option[0]}</div>
 				// 	<div>{formatDate(option[1], dateFormats[chosenFormat])}</div>
