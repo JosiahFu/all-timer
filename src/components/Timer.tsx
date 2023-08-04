@@ -22,7 +22,7 @@ function Timer(props: {
     
     return <div class="timer">
         <div class="timer-line">
-            <span class="field">{days}</span>
+            <span class="field">{pd(days)}</span>
             days,
         </div>
         <div class="timer-line">

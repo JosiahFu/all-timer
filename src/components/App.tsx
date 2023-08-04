@@ -11,7 +11,7 @@ function App () {
 		c => `${c.month}/${c.day}/${c.year.substring(2,4)} ${c.hr12}:${pd(c.minute)} ${c.ampm}`,
 		c => `${c.year}-${pd(c.month)}-${pd(c.day)} ${pd(c.hour)}:${pd(c.minute)}`,
 	], []);
-	
+
 	const [chosenFormat, setChosenFormat] = useLocalStorageState(0, 'chosenFormat');
 
 	const timeOptions = useMemo(() => [
@@ -21,15 +21,26 @@ function App () {
 		['2024 Kickoff', new Date('2024-01-13T09:00:00')],
 	] as [name: string, start: Date][], []);
 	
-	const [chosenTime, setChosenTime] = useLocalStorageState(0, 'chosenTime');
+	const URIchosen = useMemo(() => {
+		const search = window.location.hash.substring(1);
+		const index = timeOptions.findIndex(e => e[0].toLowerCase().replaceAll(' ', '-') === search);
+		return (index === -1) ? undefined : index
+	}, []);
+	
+	const [chosenTime, setChosenTime] = useLocalStorageState(URIchosen ?? 0, 'chosenTime', URIchosen !== undefined);
 	
 	const targetTime = useMemo(() => timeOptions[chosenTime], [timeOptions, chosenTime]);
+	
+	const handleSetTime = (index: number) => {
+		setChosenTime(index);
+		window.location.hash = timeOptions[index][0].toLowerCase().replaceAll(' ', '-');
+	}
     
 	return <main>
 		<div class="center">
 			<Timer targetTime={targetTime[1]} />
 			<span class="subtitle">until</span>
-			<Dropdown options={timeOptions} value={chosenTime} onInput={setChosenTime}>{(option) => (
+			<Dropdown options={timeOptions} value={chosenTime} onInput={handleSetTime}>{(option) => (
 				// <div class="option">
 				// 	<div>{option[0]}</div>
 				// 	<div>{formatDate(option[1], dateFormats[chosenFormat])}</div>
