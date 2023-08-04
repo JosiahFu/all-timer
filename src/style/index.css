@@ -37,6 +37,7 @@ main {
 	backdrop-filter: blur(16px);
 	background-color: #fff1;
 	border: 2px solid #fff3;
+	box-shadow: 0 0 1em #0004;
 }
 
 .corner {
