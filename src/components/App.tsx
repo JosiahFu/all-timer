@@ -22,6 +22,7 @@ function App () {
 	] as [name: string, start: Date][], []);
 	
 	const URIchosen = useMemo(() => {
+		if (typeof window === 'undefined') return undefined;
 		const search = window.location.hash.substring(1);
 		const index = timeOptions.findIndex(e => e[0].toLowerCase().replaceAll(' ', '-') === search);
 		return (index === -1) ? undefined : index
