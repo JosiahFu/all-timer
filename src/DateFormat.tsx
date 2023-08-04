@@ -16,7 +16,7 @@ function formatDate(date: Date, formatter: (components: DateComponents) => strin
 		hour:   date.getHours()    .toString(),
 		hr12:  (date.getHours()%12).toString(),
 		minute: date.getMinutes()  .toString(),
-		ampm:   date.getHours() > 11 ? 'AM' : 'PM'
+		ampm:   date.getHours() > 11 ? 'PM' : 'AM'
 	});
 }
 
