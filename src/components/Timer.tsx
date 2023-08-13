@@ -12,8 +12,7 @@ function Timer(props: {
         return () => clearInterval(interval);
     })
     
-    const diff = props.targetTime.valueOf() - currentTime.valueOf();
-    
+    const diff = Math.max(0, props.targetTime.valueOf() - currentTime.valueOf());
     
     const days = Math.floor(diff / (24 * 60 * 60 * 1000));
     const hours = Math.floor(diff / (60 * 60 * 1000)) % 24;
@@ -23,15 +22,15 @@ function Timer(props: {
     return <div class="timer">
         <div class="timer-line">
             <span class="field">{pd(days)}</span>
-            days,
+            days
         </div>
         <div class="timer-line">
             <span class="field">{pd(hours)}</span>
-            hours,
+            hours
         </div>
         <div class="timer-line">
             <span class="field">{pd(minutes)}</span>
-            minutes, and
+            minutes and
         </div>
         <div class="timer-line">
             <span class="field">{pd(seconds)}</span>

@@ -94,7 +94,7 @@ main {
 	border: 2px solid #fff3;
 	cursor: pointer;
 	backdrop-filter: blur(16px);
-	transition: background-color 0.1s;
+	transition: background-color 0.2s;
 	padding: 0.5em;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 .dropdown-option {
-	transition: background-color 0.1s;
+	transition: background-color 0.2s;
 	padding: 0.2em 0.5em;
 	cursor: pointer;
 }
