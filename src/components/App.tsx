@@ -15,7 +15,7 @@ function App () {
 	const [chosenFormat, setChosenFormat] = useLocalStorageState(0, 'chosenFormat');
 
 	const timeOptions = useMemo(() => [
-		['Start of School', new Date('2023-08-14T08:50:00')],
+		['4201 Orientation', new Date('2023-09-05T16:00:00')],
 		['Socal Showdown', new Date('2023-10-06T08:00:00')],
 		['UC Applications Due', new Date('2023-11-30T11:59:00')],
 		['2024 Kickoff', new Date('2024-01-13T09:00:00')],
