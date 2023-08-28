@@ -110,13 +110,19 @@ main {
 	position: absolute;
 	top: 100%;
 	border-radius: 0.5em;
-	overflow: hidden;
+	overflow-x: hidden;
+        overflow-y: auto;
 	font-size: 0.9em;
 	min-width: 100%;
 	width: max-content;
 	backdrop-filter: blur(16px);
 	background-color: #fff1;
 	border: 2px solid #fff3;
+        visibility: collapse;
+}
+
+.dropdown-open .dropdown-content {
+    visibility: visible;
 }
 
 .dropdown-option {

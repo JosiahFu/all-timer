@@ -1,5 +1,6 @@
 import { h } from 'preact';
-import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState, useRef } from 'preact/hooks';
+import { useHandler } from '@tater-archives/react-use-handler';
 
 function Dropdown<T,>(props: {
     options: T[],
@@ -12,25 +13,34 @@ function Dropdown<T,>(props: {
     const handleClick = useCallback(() => {
         setOpened(true);
     }, []);
-    
-    useEffect(() => {
-        const handler = () => {
-            if (opened) {
-                setOpened(false);
-            }                        
-        };
-        
-        window.addEventListener('click', handler);
-        return () => window.removeEventListener('click', handler);
-    })
+
+    useHandler('click', useCallback(() => {
+        if (opened) {
+            setOpened(false);
+        }
+    }, [opened]));
+
+    const [dropdownHeight, setDropdownHeight] = useState<number | undefined>();
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useHandler('resize', useCallback(() => {
+        if (!dropdownRef.current) return;
+        const rect = dropdownRef.current.getBoundingClientRect();
+        const height = window.innerHeight - rect.top
+        if (height > rect.height) {
+            setDropdownHeight(undefined);
+        } else {
+            setDropdownHeight(height);
+        }
+    }, []));
 
     return <div class={`dropdown ${opened ? 'dropdown-open' : ''}`}>
         <div class="dropdown-button" onClick={handleClick}>{props.children(props.options[props.value])}</div>
-        {opened && <div class="dropdown-content">{props.options.map((e, i) => (
+        <div class="dropdown-content" ref={dropdownRef} style={{maxHeight: dropdownHeight}}>{props.options.map((e, i) => (
             <div key={i} class="dropdown-option" onClick={() => props.onInput(i)}>
                 {props.children(e)}
             </div>
-        ))}</div>}
+        ))}</div>
     </div>
 }
 

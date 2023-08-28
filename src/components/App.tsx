@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact';
 import Timer from './Timer';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo, useState, useRef, useCallback } from 'preact/hooks';
 import Dropdown from './Dropdown';
 import { DateComponents, formatDate, pd } from '../DateFormat';
 import useLocalStorageState from '../useLocalStorageState';
@@ -38,7 +38,7 @@ function App () {
 		setChosenTime(index);
 		window.location.hash = timeOptions[index][0].toLowerCase().replaceAll(' ', '-');
 	}
-    
+
 	return <main>
 		<div class="center">
 			<Timer targetTime={targetTime[1]} />

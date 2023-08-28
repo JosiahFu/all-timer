@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "@tater-archives/react-use-handler": "^1.0.1",
     "preact": "^10.10.0",
     "preact-render-to-string": "^5.2.1"
   },
