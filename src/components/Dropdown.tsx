@@ -23,7 +23,8 @@ function Dropdown<T,>(props: {
     const [dropdownHeight, setDropdownHeight] = useState<number | undefined>();
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    useHandler('resize', useCallback(() => {
+    const fixSize = useCallback(() => {
+        console.log(`checking resize for ${props.value}`);
         if (!dropdownRef.current) return;
         const rect = dropdownRef.current.getBoundingClientRect();
         const height = window.innerHeight - rect.top
@@ -32,7 +33,11 @@ function Dropdown<T,>(props: {
         } else {
             setDropdownHeight(height);
         }
-    }, []));
+    }, [])
+
+    useHandler('resize', fixSize);
+
+    useEffect(fixSize, []);
 
     return <div class={`dropdown ${opened ? 'dropdown-open' : ''}`}>
         <div class="dropdown-button" onClick={handleClick}>{props.children(props.options[props.value])}</div>
