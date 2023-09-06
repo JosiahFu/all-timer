@@ -19,7 +19,7 @@ function App () {
 		['SoCal Showdown', new Date('2023-10-06T08:00:00')],
 		['Beach Blitz', new Date('2023-11-03T08:00:00')],
 		['UC Applications Due', new Date('2023-11-30T11:59:00')],
-		['2024 Kickoff', new Date('2024-01-13T09:00:00')],
+		['2024 Kickoff', new Date('2024-01-06T09:00:00')],
 		['2024 FIRST Championships', new Date('2024-04-17T09:00:00')],
 	] as [name: string, start: Date][], []);
 
