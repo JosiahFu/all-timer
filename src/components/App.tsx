@@ -1,6 +1,5 @@
-import { h, Fragment } from 'preact';
 import Timer from './Timer';
-import { useMemo, useState, useRef, useCallback } from 'preact/hooks';
+import { useMemo } from 'preact/hooks';
 import Dropdown from './Dropdown';
 import { DateComponents, formatDate, pd } from '../DateFormat';
 import useLocalStorageState from '../useLocalStorageState';
@@ -22,12 +21,12 @@ function App () {
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
 	] as [name: string, start: Date][], []);
 
-        const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
+	// const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
 	
 	const URIchosen = useMemo(() => {
 		if (typeof window === 'undefined') return undefined;
 		const search = window.location.hash.substring(1);
-		const index = timeOptions.findIndex(e => e[0].toLowerCase().replaceAll(' ', '-') === search);
+		const index = timeOptions.findIndex(e => e[0].toLowerCase().replace(/ /g, '-') === search);
 		return (index === -1) ? undefined : index
 	}, []);
 	
@@ -37,7 +36,7 @@ function App () {
 	
 	const handleSetTime = (index: number) => {
 		setChosenTime(index);
-		window.location.hash = timeOptions[index][0].toLowerCase().replaceAll(' ', '-');
+		window.location.hash = timeOptions[index][0].toLowerCase().replace(/ /g, '-');
 	}
 
 	return <main>
