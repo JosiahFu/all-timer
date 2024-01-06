@@ -22,7 +22,7 @@ jobs:
       - name: Build app
         env:
           GITHUB_PAGES: all-timer
-        run: npm run build-gh
+        run: npm run build
         
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v2
