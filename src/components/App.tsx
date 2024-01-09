@@ -22,7 +22,7 @@ function App () {
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
 	] as [name: string, start: Date][], []);
 
-        const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
+	const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
 	
 	const URIchosen = useMemo(() => {
 		if (typeof window === 'undefined') return undefined;
@@ -33,7 +33,11 @@ function App () {
 	
 	const [chosenTime, setChosenTime] = useLocalStorageState(URIchosen ?? 0, 'chosenTime', URIchosen !== undefined);
 	
-	const targetTime = useMemo(() => timeOptions[chosenTime], [timeOptions, chosenTime]);
+	if (!(chosenTime in timeOptions)) {
+		setChosenTime(0);
+	}
+	
+	const targetTime = useMemo(() => timeOptions[chosenTime] ?? timeOptions[0], [timeOptions, chosenTime]);
 	
 	const handleSetTime = (index: number) => {
 		setChosenTime(index);
