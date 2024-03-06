@@ -16,7 +16,7 @@ function App () {
 
 	const timeOptions = useMemo(() => [
 		['Port Hueneme Regional', new Date('2024-03-01T07:00:00')],
-		['LA Regional', new Date('2024-03-14T07:00:00')],
+		['LA Regional', new Date('2024-03-15T07:00:00')],
 		['2024 FIRST Championships', new Date('2024-04-17T09:00:00')],
 		['College Decision Day', new Date('2024-05-01T00:00:00')],
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
