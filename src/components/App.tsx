@@ -20,7 +20,6 @@ function App () {
 		['2024 FIRST Championships', new Date('2024-04-17T09:00:00')],
 		['College Decision Day', new Date('2024-05-01T00:00:00')],
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
-		['Essay', new Date('2024-01-20T23:30:00')],
 	] as [name: string, start: Date][], []);
 
 	const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
