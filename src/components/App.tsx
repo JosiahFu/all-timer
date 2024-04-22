@@ -22,7 +22,7 @@ function App () {
 		['College Decision Day', new Date('2024-05-01T00:00:00')],
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
 		['Minecraft Movie Released', new Date('2025-04-04T00:00:00')],
-		['Windows 10 EOL', new Date('2024-10-14T00:00:00')],
+		['Windows 10 EOL', new Date('2025-10-14T00:00:00')],
 	] as [name: string, start: Date][], []);
 
 	const remainingTimeOptions = useMemo(() => timeOptions.filter(([_, date]) => date > new Date()), []);
