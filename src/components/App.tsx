@@ -20,7 +20,7 @@ function App () {
 		['2025 Season Revealed', new Date('2024-04-20T10:00:00')],
 		['2024 FIRST Championships', new Date('2024-04-17T09:00:00')],
 		['College Decision Day', new Date('2024-05-01T00:00:00')],
-		['4201 Banquet', new Date('2024-05-21T17:30:00')],
+		['4201 Banquet', new Date('2024-05-24T17:30:00')],
 		['Last Day of School', new Date('2024-06-05T00:00:00')],
 		['Minecraft Movie Released', new Date('2025-04-04T00:00:00')],
 		['Windows 10 EOL', new Date('2025-10-14T00:00:00')],
