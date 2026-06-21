@@ -14,10 +14,7 @@ function App () {
 	const [chosenFormat, setChosenFormat] = useLocalStorageState(0, 'chosenFormat');
 
 	const timeOptions = useMemo(() => [
-		['Minecraft Live May 2026', new Date('2026-05-30T08:30:00')],
-		['Class of 2026 Graduation', new Date('2026-06-11T00:00:00')],
-        ['Down to Earth Release', new Date('2026-06-15T19:00:00')],
-		['Digital Circus Ep 9', new Date('2026-06-19T15:00:00')],
+		['Deltarune Chapter 5', new Date('2026-06-24T08:00:00')],
 		['Y2K38', new Date('2038-01-19T03:14:08')],
 		['2045 US Eclipse', new Date('2045-08-12T08:12:00')],
 	] as [name: string, start: Date][], []);
